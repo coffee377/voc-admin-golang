@@ -1,4 +1,4 @@
-module github.com/coffee377/voc/admin
+module github.com/coffee377/voc-admin
 
 go 1.13
 
@@ -14,7 +14,13 @@ replace golang.org/x/tools => github.com/golang/tools v0.0.0-20190415205951-2e9d
 
 require (
 	github.com/astaxie/beego v1.12.0
+	github.com/casbin/casbin v1.9.1
+	github.com/casbin/casbin/v2 v2.0.1
+	github.com/casbin/xorm-adapter v0.0.0-20191026011336-f11f9b23cc3d
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
+	github.com/gin-gonic/gin v1.4.0
+	github.com/go-sql-driver/mysql v1.4.1
 	github.com/shiena/ansicolor v0.0.0-20151119151921-a422bbe96644 // indirect
+	github.com/smartystreets/goconvey v1.6.4
 	github.com/wenzhenxi/gorsa v0.0.0-20190415061753-09b86265c6df // indirect
 )
