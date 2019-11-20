@@ -1,0 +1,44 @@
+#time_zone: Asia/Shanghai
+runmode: debug               # 开发模式, debug, prod, test
+name: VOC-API              # API Server的名字
+check:
+  url: http://127.0.0.1:6663   # pingServer函数请求的API服务器的ip:port
+  max_count: 10           # pingServer函数尝试的次数
+server:
+
+# HTTP 配置
+http:
+  #  enable: false
+  #  host:
+  port: 8080
+# HTTPS 配置
+https:
+  enable: true
+  #  auto_tls: true
+  #  host:
+  port: 8081
+#  cert_file:
+#  key_file:
+#  trust_file:
+# 数据库配置
+database:
+  adapter: mysql
+  #  prefix:
+  host: 47.99.116.58
+  #  port: 3306
+  #  name: voc
+  username: sysadmin
+  password: sysadmin
+  params:
+#    - parseTime: true
+#    - loc: Local
+#    - charset: utf8
+log:
+  writers: file,stdout
+#  logger_level: WARN
+#  logger_file: logs/log.log
+#  log_format_text: false
+#  rollingPolicy: size # size, daily
+#  log_rotate_date: 1
+#  log_rotate_size: 1
+#  log_backup_count: 7
