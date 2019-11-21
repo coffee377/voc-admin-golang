@@ -2,7 +2,9 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"flag"
+	"fmt"
 	"github.com/coffee377/voc-admin/internal/app"
 	"github.com/coffee377/voc-admin/internal/app/config"
 	_ "github.com/go-sql-driver/mysql"

@@ -149,7 +149,7 @@ func (c *Configuration) defaultConfig() {
 		"host":     "127.0.0.1",
 		"port":     "3306",
 		"protocol": "tcp",
-		"name":     "test",
+		"name":     "./data/test",
 		"params": Map{
 			"charset":   "utf8",
 			"parseTime": true,
