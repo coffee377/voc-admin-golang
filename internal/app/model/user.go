@@ -14,10 +14,10 @@ type User struct {
 	RealName string `json:"realName" orm:"null;column(REAL_NAME);size(8);description(真实姓名)"`   //真实姓名
 	Email    string `json:"email" orm:"null;column(EMAIL);size(128);description(邮箱)"`          //邮箱
 	Phone    string `json:"phone" orm:"null;column(PHONE);size(11);description(手机)"`           //手机
-	base.Create
+	base.Created
 	//CreateBy   string    `json:"create_by" orm:"column(CREATE_BY);size(32);description(创建人)"`       //创建人
 	//CreateTime time.Time `json:"create_time" orm:"column(CREATE_TIME);description(创建时间)"`           //创建时间
-	base.Update
+	base.Updated
 	//UpdateBy   string    `json:"update_by" orm:"column(UPDATE_BY);size(32);description(更新人)"`       //更新人
 	//UpdateTime time.Time `json:"update_time" orm:"column(UPDATE_TIME);description(更新时间)"`           //更新时间
 	Status int `json:"status" orm:"null;column(STATUS);default(1);description(状态)"` //状态

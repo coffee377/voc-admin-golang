@@ -159,7 +159,7 @@ func (c *Configuration) defaultConfig() {
 }
 
 // 初始化配置
-func (c *Configuration) initConfig() error {
+func (c *Configuration) initConfig() {
 	if c.ConfigFile != "" {
 		viper.SetConfigFile(c.ConfigFile) // 如果指定了配置文件，则解析指定的配置文件
 	} else {
@@ -171,10 +171,11 @@ func (c *Configuration) initConfig() error {
 	viper.SetEnvPrefix("API")  // 读取环境变量的前缀为 API
 	replacer := strings.NewReplacer(".", "_")
 	viper.SetEnvKeyReplacer(replacer)
-	if err := viper.ReadInConfig(); err != nil { // viper解析配置文件
-		return err
+	// viper解析配置文件
+	if err := viper.ReadInConfig(); err != nil {
+		//return err
 	}
-	return nil
+	//return nil
 }
 
 // 监控配置文件变化并热加载程序
@@ -196,13 +197,11 @@ func (c *Configuration) unmarshal() {
 	}
 }
 
-func Init(configFile string) error {
+func Init(configFile string) {
 	Global.ConfigFile = configFile
 
 	// 初始化配置文件
-	if err := Global.initConfig(); err != nil {
-		return err
-	}
+	Global.initConfig()
 
 	// 默认配置
 	Global.defaultConfig()
@@ -213,5 +212,4 @@ func Init(configFile string) error {
 	// 监控配置文件变化并热加载程序
 	Global.watchConfig()
 
-	return nil
 }

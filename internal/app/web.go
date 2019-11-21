@@ -57,23 +57,13 @@ func initWeb() *gin.Engine {
 	return app
 }
 
-//var server = &http.Server{}
 var (
-	//err        error
-	//l          net.Listener
 	handler    = initWeb()
 	endRunning = make(chan bool, 1)
 )
 
 // 初始化http服务
 func InitHTTPServer(ctx context.Context) func() {
-	//beego.Run()
-
-	//server.Handler = initWeb()
-	//server.ReadTimeout = time.Duration(60) * time.Second
-	//server.WriteTimeout = time.Duration(60) * time.Second
-	//server.IdleTimeout = 15 * time.Second
-	//server.ErrorLog =
 
 	// HTTP
 	go startHttpServer(config.Global.Http)

@@ -2,7 +2,6 @@ package handler
 
 import (
 	"github.com/coffee377/voc-admin/internal/app/model"
-	"github.com/coffee377/voc-admin/internal/app/model/base"
 	"github.com/gin-gonic/gin"
 	"time"
 )
@@ -47,7 +46,7 @@ func Login(c *gin.Context) {
 	//ginplus.ResSuccess(c, tokenInfo)
 	u := model.User{}
 	u.Username = "demo"
-	u.CreateTime = base.UnixTime(time.Now())
+	u.CreatedAt = time.Now()
 	c.JSON(200, u)
 }
 

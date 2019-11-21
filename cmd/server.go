@@ -7,7 +7,9 @@ import (
 	"fmt"
 	"github.com/coffee377/voc-admin/internal/app"
 	"github.com/coffee377/voc-admin/internal/app/config"
+	"github.com/coffee377/voc-admin/pkg/version"
 	_ "github.com/go-sql-driver/mysql"
+	"os"
 	"time"
 )
 
@@ -16,7 +18,8 @@ import (
 //}
 
 var (
-	configFile string
+	configFile      string
+	showVersionInfo bool
 	//modelFile  string
 	//wwwDir     string
 	//swaggerDir string
@@ -25,6 +28,8 @@ var (
 
 func init() {
 	flag.StringVar(&configFile, "c", "", "配置文件(.json,.yaml,.toml)")
+	flag.BoolVar(&showVersionInfo, "v", false, "显示版本信息")
+	//version = pflag.BoolP("version", "v", false, "show version info.")
 	//flag.StringVar(&modelFile, "m", "", "Casbin的访问控制模型(.conf)")
 	//flag.StringVar(&wwwDir, "www", "", "静态站点目录")
 	//flag.StringVar(&swaggerDir, "swagger", "", "swagger目录")
@@ -39,11 +44,21 @@ func main() {
 	flag.Parse()
 
 	// init config
-	if err := config.Init(configFile); err != nil {
-		panic(err)
-	}
+	config.Init(configFile)
 
 	app.InitLogger()
+
+	if showVersionInfo {
+		v := version.Get()
+		marshalled, err := json.MarshalIndent(&v, "", "  ")
+		if err != nil {
+			fmt.Printf("%v\n", err)
+			os.Exit(1)
+		}
+
+		fmt.Println(string(marshalled))
+		return
+	}
 
 	app.Init(context.Background())
 	//model := casbin.NewModel("conf/model.conf")
