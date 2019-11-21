@@ -23,10 +23,11 @@ https:
 # 数据库配置
 database:
   adapter: mysql
+  dir: ./data # sqlite 数据存储位置
   #  prefix:
   host: 47.99.116.58
-  #  port: 3306
-  #  name: voc
+    #  port: 3306
+#  name: test
   username: sysadmin
   password: sysadmin
   params:

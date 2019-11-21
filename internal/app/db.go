@@ -23,7 +23,11 @@ func openDB() (*gorm.DB, error) {
 	dialect = strings.ToLower(db.Adapter)
 	switch dialect {
 	case SQLITE:
-		source = fmt.Sprintf("%s.db", db.Name)
+		if db.Dir == "" {
+			source = fmt.Sprintf("%s.db", db.Name)
+		} else {
+			source = fmt.Sprintf("%s/%s.db", strings.TrimSuffix(db.Dir, "/"), db.Name)
+		}
 		break
 	case MYSQL:
 		var params = ""

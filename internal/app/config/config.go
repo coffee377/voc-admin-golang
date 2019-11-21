@@ -31,6 +31,7 @@ type Https struct {
 
 type DataBase struct {
 	Adapter  string                 `json:"adapter"`
+	Dir      string                 `json:"dir"` // 数据库文件存放目录
 	Prefix   string                 `json:"prefix"`
 	Username string                 `json:"username"`
 	Password string                 `json:"password"`
@@ -140,16 +141,16 @@ func (c *Configuration) defaultConfig() {
 	})
 
 	// DataBase
-	viper.RegisterAlias("parseTime", "parsetime")
 	viper.SetDefault("database", Map{
 		"adapter":  "sqlite3",
+		"dir":      "./data",
 		"prefix":   "",
 		"username": "",
 		"Password": "",
 		"host":     "127.0.0.1",
 		"port":     "3306",
 		"protocol": "tcp",
-		"name":     "./data/test",
+		"name":     "test",
 		"params": Map{
 			"charset":   "utf8",
 			"parseTime": true,
